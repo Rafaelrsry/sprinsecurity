@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body>
+
+      <div th:fragment="histovent" id="historialventas"  style="display: none;">
+
+        
+        <div class="mb-3">
+          <h1 class="text-center"> Historial de ventas <span> <img src="img/dinerohisto.png" th:src="@{/img/dinerohisto.png}" alt=""></span></h1>
+
+        <form class="d-flex flex-row">
+      <input class="form-control mr-sm-2" type="search" placeholder="Busca por codigo, fecha, producto o venta total" id="histo" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 btnHisto" type="submit">Buscar</button>
+    </form>
+
+      </div>
+
+      <div class="table-responsive vertscrol">
+        <table class="table  table-hover table-bordered vertscrol" id="tablehisto">
+          <thead>
+            <tr>
+              <th scope="col">IdVenta</th>
+              <th scope="col">Codigoventa</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Cantidad Porciones</th>
+              <th scope="col">Valor de la venta</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Estado</th>
+              
+              
+              
+              
+            </tr>
+          </thead>
+  
+<tbody>
+  <tr th:each="detalleventa : ${listadet}" th:if="${detalleventa.venta.encargo.estadopedido.estado eq 'COMPLETADO'}">
+    <td th:text="${detalleventa.iddetalles_ventas}"></td>
+    <td th:text="${detalleventa.venta.encargo.codigoencargo}"></td>
+    <td th:text="${detalleventa.venta.vnt_fecha}"></td>
+    <td th:text="${detalleventa.venta.producto.pdt_producto}"></td>
+    <td th:text="${detalleventa.venta.vnt_cantidad}"></td>
+    <td th:text="${detalleventa.venta.vnt_valorventa}"></td>
+    <td th:text="${detalleventa.usuario.id_usuario}"></td>
+    <td th:text="${detalleventa.venta.encargo.estadopedido.estado}"></td>
+  </tr>
+</tbody>
+        </table>
+      </div> 
+
+      </div>
+</body>
+</html>

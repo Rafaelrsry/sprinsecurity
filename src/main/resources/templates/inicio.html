@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="layout::head">
+
+</head>
+
+<body>
+<!-- Navegador -->
+  <nav class="sidebar">
+    <span class="logo">Aempa</span>
+    <div class="menu-content">
+      <ul class="menu-items">
+        <!--<div class="menu-title">Dashboard</div>-->
+        <li class="item">
+          <a class="" href="#"> <span><img src="img/tablero.png" th:src="@{/img/tablero.png}" alt=""></span> Dashboard</a>
+        </li>
+        <li class="item">
+          <a href="#" onclick="OcultarClientes()"> <span><img src="img/cliente.png" th:src="@{/img/cliente.png}" alt=""></span> Clientes</a>
+        </li>
+        <li class="item">
+          <a href="#" onclick="OcultarProductos()"> <span><img src="img/caja.png"  th:src="@{/img/caja.png}" alt=""></span> Productos</a>
+        </li>
+        <li class="item">
+          <a href="#" onclick="OcultarEmpleados()"> <span><img src="img/headhunting.png" th:src="@{/img/headhunting.png}" alt=""></span> Empleados</a>
+        </li>
+        <li class="item">
+          <div class="submenu-item">
+            <span><img src="img/zakat.png"  th:src="@{/img/zakat.png}" alt=""> Ventas</span>
+            <span><img class="flecha" src="img/forwardarrow_haciaadelante_4836.png"  th:src="@{/img/forwardarrow_haciaadelante_4836.png}" alt=""></span>
+          </div>
+          <ul class="menu-items submenu">
+            <div class="menu-title">
+              <span><img class="flecha" src="img/back_arrow_5821.png"  th:src="@{/img/back_arrow_5821.png}" alt=""></span>
+              Submenu Ventas
+            </div>
+            <li class="item">
+              <a href="ventas"><span><img src="img/dinero.png" th:src="@{/img/paquete.png}" alt=""></span> Realizar Venta</a>
+            </li>
+            <li class="item">
+              <a href="#" onclick="OcultarHistorial()"><img src="img/tiempo.png" th:src="@{/img/tiempo.png}" alt=""></span> Historial Ventas</a>
+            </li>
+          </ul>
+        </li>
+        <li class="item">
+          <a href="#" onclick="OcultarEncargos()"> <span><img src="img/encargarse-de.png" th:src="@{/img/encargarse-de.png}" alt=""></span> Encargos</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <nav class="navbor">
+    <span id="sidebar-close"><img src="img/justified-text.png"  th:src="@{/img/justified-text.png}" alt=""></span>
+    <span class="user"> Usuario </span>
+  </nav>
+<!-- Navegador -->
+
+
+	<!--  Contenido  Pasteleria -->
+
+	<main class="main">
+		<!-- Fondo Negro modal  -->
+		<div class="bck ocultar" id="fondo">
+			<span> <br></span>
+		</div>
+		<!-- Fondo Negro modal  -->
+
+		<div class="container">
+		
+			<!--Empiezan MODALES -->
+			<!-- Modal cliente -->
+			<div th:insert="modales/modalcliente::modalcliente"></div>
+			<div th:insert="modales/modalcliente::eliminarcliente"></div>
+			<!-- Termina Modal Cliente -->
+
+			<!-- Modal Productos-->
+			<div th:insert="modales/modalproducto::modalproducto"></div>
+			<div th:insert="modales/modalproducto::eliminarproducto"></div>
+			
+			<!-- Termina Modal Productos-->
+
+			<!-- Modal Empleado-->
+			<div th:insert="modales/modalempleados::modalempleado"></div>
+			<div th:insert="modales/modalempleados::eliminarempleado"></div>
+			<!-- Modal-->
+			<!--Terminan MODALES -->
+
+
+
+			<!-- Vista Cliente -->
+			<div th:insert="forms/clientes::clientes"></div>
+
+			<!-- Vista Producto -->
+			<div th:insert="forms/productos::productos"></div>
+
+
+			<!-- Vista Empleados -->
+
+			<div th:insert="forms/empleados::empleados"></div>
+
+			<!-- Vista Encargos -->
+			<div th:insert="forms/encargos::encargos"></div>
+			<div th:insert="modales/modalencargos::eliminarEnc"></div>
+			
+			<!-- Vista Historial -->
+			<div th:insert="forms/historialventas::histovent"></div>
+			
+			
+			
+
+		</div>
+	</main>
+
+	<footer th:insert="layout::footer"> </footer>
+
+
+
+
+
+</body>
+
+</html>
